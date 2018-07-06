@@ -1,6 +1,6 @@
 ﻿Public Class Main
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        LoadFont("C:\Users\Manos\Desktop\Font.txt")
     End Sub
 
     Private Function ResizeImage(ByVal Image As Bitmap, ByVal Scale As Integer)
@@ -17,10 +17,24 @@
         Return Temp
     End Function
 
-    Private Sub InitFont(ByRef Font As Font)
-        Dim SmallA As Letter = New Letter("a", {}, 0)
+    Private Sub LoadFont(ByVal Filename As String)
+        Dim Font As New Font
+        Dim Lines() As String = IO.File.ReadAllLines(Filename)
+        For Each Line As String In Lines
+            Dim Name As String = Line.Substring(0, 1)
+            Dim Data() As String = Line.Substring(1).Replace("{", "").Replace("}", "").Split(",")
+            Dim Length As Integer = 0
+            Dim Bytes(Data.Length - 1) As Integer
+            For Each Item As String In Data
+                Bytes(Length) = CInt(Item)
+                Length += 1
+            Next
+            Font.Letters.Add(Name, Bytes)
+        Next
+    End Sub
 
-        'Font.Letters.Add("a", )
+    Private Sub InitFont(ByRef Font As Font)
+
     End Sub
 
 End Class
