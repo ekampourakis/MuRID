@@ -1,6 +1,9 @@
 ﻿Public Class Main
+
+    Dim CurrentFont As New Font("C:\Users\Manos\Documents\GitHub\MuRID\Font.txt")
+
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadFont("C:\Users\Manos\Desktop\Font.txt")
+
     End Sub
 
     Private Function ResizeImage(ByVal Image As Bitmap, ByVal Scale As Integer)
@@ -17,24 +20,62 @@
         Return Temp
     End Function
 
-    Private Sub LoadFont(ByVal Filename As String)
-        Dim Font As New Font
-        Dim Lines() As String = IO.File.ReadAllLines(Filename)
-        For Each Line As String In Lines
-            Dim Name As String = Line.Substring(0, 1)
-            Dim Data() As String = Line.Substring(1).Replace("{", "").Replace("}", "").Split(",")
-            Dim Length As Integer = 0
-            Dim Bytes(Data.Length - 1) As Integer
-            For Each Item As String In Data
-                Bytes(Length) = CInt(Item)
-                Length += 1
-            Next
-            Font.Letters.Add(Name, Bytes)
+    Private Sub ShowText(ByVal Text As String, ByVal Optional Center As Boolean = False)
+        Dim s As New Stopwatch
+        s.Start()
+        Dim Width As Integer = 0
+        Dim Chars As Integer = 0
+        Dim Letters As New List(Of Integer())
+        For Each C As Char In Text
+            Dim Current As Integer() = CurrentFont.Letter(C)
+            Letters.Add(Current)
+            Width += Current.Length + 1
+            Chars += 1
         Next
+        Width -= 1
+        s.Stop()
+        Label1.Text = s.ElapsedMilliseconds
+        If Width <= 32 Then
+            Dim Image As New Bitmap(32, 8)
+            Dim Pos As Integer = 0
+            If Center Then
+                Pos = (32 - Width) / 2
+            End If
+            For Each Letter As Integer() In Letters
+                For Each Column As Integer In Letter
+                    ' decompress integer 
+                    Dim Bits(8) As Boolean
+                    Dim Tmp As Integer = Column
+                    For Index As Integer = 7 To 0 Step -1
+                        If Tmp >= 2 ^ Index Then
+                            Tmp -= 2 ^ Index
+                            Bits(Index) = True
+                            Image.SetPixel(Pos, Index, Color.Red)
+                        Else
+                            Image.SetPixel(Pos, Index, Color.Black)
+                        End If
+                    Next
+                    Pos += 1
+                Next
+                Pos += 1
+            Next
+            Matrix.Image = ResizeImage(Image, 32)
+        Else
+            ShowText("Too long")
+        End If
+
+
+        s.Stop()
+        Label1.Text = s.ElapsedMilliseconds
+        Dim x = 0
     End Sub
 
-    Private Sub InitFont(ByRef Font As Font)
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ShowText(TextBox1.Text, CheckBox1.Checked)
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        CurrentFont.ExportFont("C:\Users\Manos\Desktop\Temp.txt")
+    End Sub
 End Class

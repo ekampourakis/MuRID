@@ -1,6 +1,7 @@
 ﻿Public Class FontDesigner
 
     Dim Bytes(8, 8) As Boolean
+    Dim CurrentFont As New Font()
 
     Private Sub FontDesigner_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         UpdateImage()
@@ -100,5 +101,9 @@
         ReDim Bytes(8, 8)
         UpdateImage()
         UpdateResult()
+    End Sub
+
+    Private Sub CheckBox_RawEnabled_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox_RawEnabled.CheckedChanged
+        TextBox_Raw.Enabled = CheckBox_RawEnabled.Checked
     End Sub
 End Class
