@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.MuRID.FontDesigner
+            Me.MainForm = Global.MuRID.Main
         End Sub
     End Class
 End Namespace
