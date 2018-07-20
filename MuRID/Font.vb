@@ -1,6 +1,7 @@
 ﻿Public Class Font
     Private Letters As New Dictionary(Of Char, Integer())
     Private LoadedFilename As String = ""
+    Private LoadedFontName As String = "null" 'unnamed
     Public Sub New(ByVal Optional Filename As String = "")
         If Filename <> "" Then LoadFont(Filename)
     End Sub
@@ -49,7 +50,8 @@
         Return Letters.ContainsKey(Key)
     End Function
     Public Function Letter(ByVal Key As String) As Integer()
-        If Letters.ContainsKey(Key) Then Return Letters.Item(Key) Else Return {240, 176, 208, 240}
+        Dim NotFound As Integer() = {240, 176, 208, 240}
+        If Letters.ContainsKey(Key) Then Return Letters.Item(Key) Else Return NotFound
     End Function
     Public Function Keys()
         Return Letters.Keys()

@@ -7,6 +7,12 @@
     Private Sub FontDesigner_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         UpdateImage()
         UpdateResult()
+        Dim DialogResult As Integer = MessageBox.Show("You have not loaded fonts. Do you want to open one?", "Notice", MessageBoxButtons.YesNo)
+        If DialogResult = Windows.Forms.DialogResult.No Then
+            Exit Sub
+        ElseIf DialogResult = Windows.Forms.DialogResult.Yes Then
+            Button_LoadFont_Click(Button_LoadFont, Nothing)
+        End If
     End Sub
 
     Private Sub PictureBox_Letter_Click(sender As Object, e As MouseEventArgs) Handles PictureBox_Letter.MouseClick

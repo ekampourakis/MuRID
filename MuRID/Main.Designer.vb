@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Main
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,182 +20,246 @@ Partial Class Main
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Matrix = New System.Windows.Forms.PictureBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.TrackBar1 = New System.Windows.Forms.TrackBar()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.TextBox_Message = New System.Windows.Forms.TextBox()
+        Me.Button_Preview = New System.Windows.Forms.Button()
+        Me.CheckBox_Center = New System.Windows.Forms.CheckBox()
+        Me.Button_FontEditor = New System.Windows.Forms.Button()
+        Me.Button_Transmit = New System.Windows.Forms.Button()
+        Me.SerialPort = New System.IO.Ports.SerialPort(Me.components)
+        Me.CheckBox_Enabled = New System.Windows.Forms.CheckBox()
+        Me.Timer_Clock = New System.Windows.Forms.Timer(Me.components)
+        Me.BackgroundWorker_Serial = New System.ComponentModel.BackgroundWorker()
+        Me.CheckBox_Preview = New System.Windows.Forms.CheckBox()
+        Me.Label_Brightness = New System.Windows.Forms.Label()
+        Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.Button_LoadFont = New System.Windows.Forms.Button()
+        Me.Label_CurrentFont = New System.Windows.Forms.Label()
+        Me.TrackBar_Brightness = New System.Windows.Forms.TrackBar()
+        Me.Timer_GUI = New System.Windows.Forms.Timer(Me.components)
+        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
+        Me.StatusLabel_Serial = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.CheckBox_HUD = New System.Windows.Forms.CheckBox()
         CType(Me.Matrix, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar_Brightness, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'Matrix
         '
         Me.Matrix.BackColor = System.Drawing.Color.Black
         Me.Matrix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Matrix.Location = New System.Drawing.Point(45, 125)
+        Me.Matrix.Location = New System.Drawing.Point(12, 12)
         Me.Matrix.Name = "Matrix"
         Me.Matrix.Size = New System.Drawing.Size(1024, 256)
         Me.Matrix.TabIndex = 0
         Me.Matrix.TabStop = False
         '
-        'TextBox1
+        'TextBox_Message
         '
-        Me.TextBox1.Location = New System.Drawing.Point(154, 441)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBox_Message.Location = New System.Drawing.Point(12, 297)
+        Me.TextBox_Message.Name = "TextBox_Message"
+        Me.TextBox_Message.Size = New System.Drawing.Size(159, 20)
+        Me.TextBox_Message.TabIndex = 1
         '
-        'Button1
+        'Button_Preview
         '
-        Me.Button1.Location = New System.Drawing.Point(269, 439)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "show"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button_Preview.Location = New System.Drawing.Point(177, 295)
+        Me.Button_Preview.Name = "Button_Preview"
+        Me.Button_Preview.Size = New System.Drawing.Size(75, 23)
+        Me.Button_Preview.TabIndex = 2
+        Me.Button_Preview.Text = "Preview"
+        Me.Button_Preview.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'CheckBox_Center
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(365, 443)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(56, 17)
-        Me.CheckBox1.TabIndex = 3
-        Me.CheckBox1.Text = "center"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CheckBox_Center.AutoSize = True
+        Me.CheckBox_Center.Checked = True
+        Me.CheckBox_Center.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox_Center.Location = New System.Drawing.Point(102, 328)
+        Me.CheckBox_Center.Name = "CheckBox_Center"
+        Me.CheckBox_Center.Size = New System.Drawing.Size(69, 17)
+        Me.CheckBox_Center.TabIndex = 3
+        Me.CheckBox_Center.Text = "Centered"
+        Me.CheckBox_Center.UseVisualStyleBackColor = True
         '
-        'Label1
+        'Button_FontEditor
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(63, 436)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Label1"
+        Me.Button_FontEditor.Location = New System.Drawing.Point(922, 324)
+        Me.Button_FontEditor.Name = "Button_FontEditor"
+        Me.Button_FontEditor.Size = New System.Drawing.Size(114, 23)
+        Me.Button_FontEditor.TabIndex = 6
+        Me.Button_FontEditor.Text = "Font Editor"
+        Me.Button_FontEditor.UseVisualStyleBackColor = True
         '
-        'Button2
+        'Button_Transmit
         '
-        Me.Button2.Location = New System.Drawing.Point(561, 452)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 5
-        Me.Button2.Text = "export"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button_Transmit.Location = New System.Drawing.Point(177, 324)
+        Me.Button_Transmit.Name = "Button_Transmit"
+        Me.Button_Transmit.Size = New System.Drawing.Size(75, 23)
+        Me.Button_Transmit.TabIndex = 7
+        Me.Button_Transmit.Text = "Transmit"
+        Me.Button_Transmit.UseVisualStyleBackColor = True
         '
-        'Button3
+        'SerialPort
         '
-        Me.Button3.Location = New System.Drawing.Point(150, 57)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(114, 23)
-        Me.Button3.TabIndex = 6
-        Me.Button3.Text = "font designer"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.SerialPort.PortName = "COM8"
         '
-        'Button4
+        'CheckBox_Enabled
         '
-        Me.Button4.Location = New System.Drawing.Point(289, 407)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 7
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.CheckBox_Enabled.AutoSize = True
+        Me.CheckBox_Enabled.Enabled = False
+        Me.CheckBox_Enabled.Location = New System.Drawing.Point(959, 274)
+        Me.CheckBox_Enabled.Name = "CheckBox_Enabled"
+        Me.CheckBox_Enabled.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.CheckBox_Enabled.Size = New System.Drawing.Size(77, 17)
+        Me.CheckBox_Enabled.TabIndex = 10
+        Me.CheckBox_Enabled.Text = "Screen Off"
+        Me.CheckBox_Enabled.UseVisualStyleBackColor = True
         '
-        'SerialPort1
+        'Timer_Clock
         '
-        Me.SerialPort1.BaudRate = 115200
-        Me.SerialPort1.PortName = "COM8"
         '
-        'Button5
+        'BackgroundWorker_Serial
         '
-        Me.Button5.Location = New System.Drawing.Point(346, 503)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 8
-        Me.Button5.Text = "BRIGHT"
-        Me.Button5.UseVisualStyleBackColor = True
         '
-        'TrackBar1
+        'CheckBox_Preview
         '
-        Me.TrackBar1.Location = New System.Drawing.Point(437, 494)
-        Me.TrackBar1.Maximum = 15
-        Me.TrackBar1.Name = "TrackBar1"
-        Me.TrackBar1.Size = New System.Drawing.Size(146, 45)
-        Me.TrackBar1.TabIndex = 9
+        Me.CheckBox_Preview.AutoSize = True
+        Me.CheckBox_Preview.Checked = True
+        Me.CheckBox_Preview.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox_Preview.Location = New System.Drawing.Point(12, 274)
+        Me.CheckBox_Preview.Name = "CheckBox_Preview"
+        Me.CheckBox_Preview.Size = New System.Drawing.Size(64, 17)
+        Me.CheckBox_Preview.TabIndex = 11
+        Me.CheckBox_Preview.Text = "Preview"
+        Me.CheckBox_Preview.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'Label_Brightness
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(711, 497)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(81, 17)
-        Me.CheckBox2.TabIndex = 10
-        Me.CheckBox2.Text = "CheckBox2"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.Label_Brightness.AutoSize = True
+        Me.Label_Brightness.Location = New System.Drawing.Point(742, 274)
+        Me.Label_Brightness.Name = "Label_Brightness"
+        Me.Label_Brightness.Size = New System.Drawing.Size(59, 13)
+        Me.Label_Brightness.TabIndex = 12
+        Me.Label_Brightness.Text = "Brightness:"
         '
-        'Timer1
+        'OpenFileDialog
         '
-        Me.Timer1.Interval = 500
+        Me.OpenFileDialog.DefaultExt = "*.font"
+        Me.OpenFileDialog.Filter = "Font Files|*.font|All Files|*.*"
+        Me.OpenFileDialog.Title = "Load font..."
         '
-        'Button6
+        'Button_LoadFont
         '
-        Me.Button6.Location = New System.Drawing.Point(787, 426)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 11
-        Me.Button6.Text = "Button6"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button_LoadFont.Location = New System.Drawing.Point(559, 283)
+        Me.Button_LoadFont.Name = "Button_LoadFont"
+        Me.Button_LoadFont.Size = New System.Drawing.Size(75, 23)
+        Me.Button_LoadFont.TabIndex = 13
+        Me.Button_LoadFont.Text = "Load Font"
+        Me.Button_LoadFont.UseVisualStyleBackColor = True
+        '
+        'Label_CurrentFont
+        '
+        Me.Label_CurrentFont.AutoSize = True
+        Me.Label_CurrentFont.Location = New System.Drawing.Point(640, 288)
+        Me.Label_CurrentFont.Name = "Label_CurrentFont"
+        Me.Label_CurrentFont.Size = New System.Drawing.Size(33, 13)
+        Me.Label_CurrentFont.TabIndex = 14
+        Me.Label_CurrentFont.Text = "None"
+        '
+        'TrackBar_Brightness
+        '
+        Me.TrackBar_Brightness.Location = New System.Drawing.Point(807, 274)
+        Me.TrackBar_Brightness.Maximum = 15
+        Me.TrackBar_Brightness.Minimum = -1
+        Me.TrackBar_Brightness.Name = "TrackBar_Brightness"
+        Me.TrackBar_Brightness.Size = New System.Drawing.Size(146, 45)
+        Me.TrackBar_Brightness.TabIndex = 9
+        Me.TrackBar_Brightness.Value = 4
+        '
+        'Timer_GUI
+        '
+        Me.Timer_GUI.Enabled = True
+        Me.Timer_GUI.Interval = 500
+        '
+        'StatusStrip
+        '
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusLabel_Serial})
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 350)
+        Me.StatusStrip.Name = "StatusStrip"
+        Me.StatusStrip.Size = New System.Drawing.Size(1048, 22)
+        Me.StatusStrip.TabIndex = 15
+        Me.StatusStrip.Text = "StatusStrip1"
+        '
+        'StatusLabel_Serial
+        '
+        Me.StatusLabel_Serial.Name = "StatusLabel_Serial"
+        Me.StatusLabel_Serial.Size = New System.Drawing.Size(0, 17)
+        '
+        'CheckBox_HUD
+        '
+        Me.CheckBox_HUD.AutoSize = True
+        Me.CheckBox_HUD.Location = New System.Drawing.Point(12, 328)
+        Me.CheckBox_HUD.Name = "CheckBox_HUD"
+        Me.CheckBox_HUD.Size = New System.Drawing.Size(80, 17)
+        Me.CheckBox_HUD.TabIndex = 16
+        Me.CheckBox_HUD.Text = "HUD Mode"
+        Me.CheckBox_HUD.UseVisualStyleBackColor = True
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1130, 551)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.CheckBox2)
-        Me.Controls.Add(Me.TrackBar1)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.CheckBox1)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.ClientSize = New System.Drawing.Size(1048, 372)
+        Me.Controls.Add(Me.CheckBox_HUD)
+        Me.Controls.Add(Me.StatusStrip)
+        Me.Controls.Add(Me.Label_CurrentFont)
+        Me.Controls.Add(Me.Button_LoadFont)
+        Me.Controls.Add(Me.Label_Brightness)
+        Me.Controls.Add(Me.CheckBox_Preview)
+        Me.Controls.Add(Me.CheckBox_Enabled)
+        Me.Controls.Add(Me.TrackBar_Brightness)
+        Me.Controls.Add(Me.Button_Transmit)
+        Me.Controls.Add(Me.Button_FontEditor)
+        Me.Controls.Add(Me.CheckBox_Center)
+        Me.Controls.Add(Me.Button_Preview)
+        Me.Controls.Add(Me.TextBox_Message)
         Me.Controls.Add(Me.Matrix)
+        Me.MaximumSize = New System.Drawing.Size(1064, 411)
+        Me.MinimumSize = New System.Drawing.Size(1064, 411)
         Me.Name = "Main"
-        Me.Text = "Main - MuRID"
+        Me.Text = "MuRID  "
         CType(Me.Matrix, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar_Brightness, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip.ResumeLayout(False)
+        Me.StatusStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Matrix As PictureBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents SerialPort1 As IO.Ports.SerialPort
-    Friend WithEvents Button5 As Button
-    Friend WithEvents TrackBar1 As TrackBar
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents Timer1 As Timer
-    Friend WithEvents Button6 As Button
+    Friend WithEvents TextBox_Message As TextBox
+    Friend WithEvents Button_Preview As Button
+    Friend WithEvents CheckBox_Center As CheckBox
+    Friend WithEvents Button_FontEditor As Button
+    Friend WithEvents Button_Transmit As Button
+    Friend WithEvents SerialPort As IO.Ports.SerialPort
+    Friend WithEvents CheckBox_Enabled As CheckBox
+    Friend WithEvents Timer_Clock As Timer
+    Friend WithEvents BackgroundWorker_Serial As System.ComponentModel.BackgroundWorker
+    Friend WithEvents CheckBox_Preview As CheckBox
+    Friend WithEvents Label_Brightness As Label
+    Friend WithEvents OpenFileDialog As OpenFileDialog
+    Friend WithEvents Button_LoadFont As Button
+    Friend WithEvents Label_CurrentFont As Label
+    Friend WithEvents TrackBar_Brightness As TrackBar
+    Friend WithEvents Timer_GUI As Timer
+    Friend WithEvents StatusStrip As StatusStrip
+    Friend WithEvents StatusLabel_Serial As ToolStripStatusLabel
+    Friend WithEvents CheckBox_HUD As CheckBox
 End Class

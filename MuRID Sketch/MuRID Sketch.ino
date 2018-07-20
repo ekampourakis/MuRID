@@ -5,6 +5,11 @@
 */
 
 #include "LedControl.h"
+#include <EnhancedSerial.h>
+
+#define DeviceID 97
+#define UniquePing1 96
+#define UniquePing2 134
 
 #define DINPin 7
 #define CLKPin 9
@@ -12,7 +17,7 @@
 
 #define Devices 4
 
-#define Brightness 2
+#define Brightness 4
 
 #define SetByte 24
 #define BrightnessByte 25
@@ -20,15 +25,17 @@
 #define StartByte 1
 #define EndByte 128
 
-
+EnhancedSerial ES;
 LedControl Matrix = LedControl(DINPin, CLKPin, CSPin, Devices);
 
-byte RX[Devices * 8 + 3];
+byte RXBuffer[Devices * 8 + 3];
 
 void setup() {
 	SetShutdown(false);
 	SetBrightness(Brightness);
-	Serial.begin(115200);
+	ES.Init(DeviceID);
+	ES.SetPingMessage(UniquePing1, UniquePing2);
+	Clear();
 }
 
 void SetShutdown(boolean State) {
@@ -61,26 +68,31 @@ void SetColumn(int Column, byte Value) {
 }
 
 void loop() {
-	if (Serial.available()) {
-		// Shift RX left 
-		for (int Index = 0; Index < Devices * 8 + 2; Index++) {
-			RX[Index] = RX[Index + 1];
-		}
-		RX[Devices * 8 + 2] = Serial.read();
-		// Process RX
-		if (RX[1] == StartByte && RX[Devices * 8 + 2] == EndByte) {
-			if (RX[0] == SetByte) {
-				// Set the display
-				for (int Index = 2; Index < Devices * 8 + 2; Index++) {
-					SetColumn(Index - 2, RX[Index]);
+	if (ES.IsConnected()) {
+		if (Serial.available()) {
+			// Shift RX left 
+			for (int Index = 0; Index < Devices * 8 + 2; Index++) {
+				RXBuffer[Index] = RXBuffer[Index + 1];
+			}
+			RXBuffer[Devices * 8 + 2] = Serial.read();
+			// Process RX
+			if (RXBuffer[1] == StartByte && RXBuffer[Devices * 8 + 2] == EndByte) {
+				if (RXBuffer[0] == SetByte) {
+					// Set the display
+					for (int Index = 2; Index < Devices * 8 + 2; Index++) {
+						SetColumn(Index - 2, RXBuffer[Index]);
+					}
+				} 
+				else if (RXBuffer[0] == BrightnessByte) {
+					SetBrightness(RXBuffer[2]);
+				} 
+				else if (RXBuffer[0] == PowerByte) {
+					SetShutdown(RXBuffer[2]);
 				}
-			} 
-			else if (RX[0] == BrightnessByte) {
-				SetBrightness(RX[2]);
-			} 
-			else if (RX[0] == PowerByte) {
-				SetShutdown(RX[2]);
 			}
 		}
+	}
+	else {
+		ES.TryConnect();
 	}
 }

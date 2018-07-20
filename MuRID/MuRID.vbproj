@@ -74,6 +74,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnhancedSerial.vb" />
     <Compile Include="Pixels.vb" />
     <Compile Include="Font.vb" />
     <Compile Include="FontDesigner.Designer.vb">

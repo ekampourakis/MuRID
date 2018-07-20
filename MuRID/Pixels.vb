@@ -173,3 +173,18 @@ Public Enum Direction
     Left
     Right
 End Enum
+
+Public Enum Mode
+    ShortTime   ' HH:mm
+    LongTime    ' HH:mm:ss
+    ShortDate   ' dd-mm-yy
+    LongDate    ' dd-mmm
+    CPUPercent  ' CPU: XXX%
+    RAMPercent  ' RAM: XX%  or  RAM 100%
+    RAMUsage    ' XX.Y/ZZ.W
+    Stats       ' XX%-YY% or 100%
+    Keyboard    ' LAN-X-Y where X = Shift and Y = Caps
+    'Notifications
+    'RSS
+    'Cycle
+End Enum
